@@ -49,16 +49,15 @@ bool Won()
     return false;
 }
 
-// Основная функция
-void Main(string[] args)
-{
+
     // Приветствуем игрока
     Greet();
 
     // Проверяем правильность использования
-    if (args.Length != 1)
+    if (args.Length != 1 || !int.TryParse(args[0], out d))
     {
-        Console.WriteLine("Usage: fifteen d");
+        Console.WriteLine("Usage: dotnet run d. Where \"d\" is board size");
+        Console.WriteLine("Example: \"dotnet run 3\". Command create 3 x 3 game board.");
         return;
     }
 
@@ -94,7 +93,7 @@ void Main(string[] args)
 
         string? input = Console.ReadLine();
 
-        if (input != null && int.TryParse(input, out int tile))
+        if (int.TryParse(input, out int tile))
         {
         // Делаем ход, если возможно, иначе сообщаем об ошибке
         if (!Move(tile))
@@ -106,11 +105,4 @@ void Main(string[] args)
         // Пауза для анимации
         Thread.Sleep(500);
         }
-        else{
-            Console.WriteLine("Invalid input. Please enter a valid number.");
-        }
     }
-}
-
-// Вызов функции Main с аргументами
-Main(Environment.GetCommandLineArgs());
