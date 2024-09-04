@@ -49,47 +49,6 @@ bool Won()
     return false;
 }
 
-void Save()
-{
-    // Лог файл
-    const string log = "log.txt";
-
-    // Удаляем существующий лог при первом сохранении
-    bool saved = false;
-    if (!saved)
-    {
-        if (File.Exists(log))
-        {
-            File.Delete(log);
-        }
-        saved = true;
-    }
-
-    // Открываем лог для записи
-    using (StreamWriter sw = new StreamWriter(log, true))
-    {
-        sw.Write("{");
-        for (int i = 0; i < d; i++)
-        {
-            sw.Write("{");
-            for (int j = 0; j < d; j++)
-            {
-                sw.Write(board[i, j]);
-                if (j < d - 1)
-                {
-                    sw.Write(",");
-                }
-            }
-            sw.Write("}");
-            if (i < d - 1)
-            {
-                sw.Write(",");
-            }
-        }
-        sw.Write("}\n");
-    }
-}
-
 // Основная функция
 void Main(string[] args)
 {
@@ -123,9 +82,6 @@ void Main(string[] args)
         // Рисуем текущее состояние доски
         Draw();
 
-        // Сохраняем текущее состояние доски (для тестирования)
-        Save();
-
         // Проверяем на победу
         if (Won())
         {
@@ -135,10 +91,10 @@ void Main(string[] args)
 
         // Запрашиваем ход
         Console.Write("Tile to move: ");
-        int tile;
+
         string? input = Console.ReadLine();
 
-        if(input != null && int.TryParse(input, out tile))
+        if (input != null && int.TryParse(input, out int tile))
         {
         // Делаем ход, если возможно, иначе сообщаем об ошибке
         if (!Move(tile))
@@ -149,6 +105,9 @@ void Main(string[] args)
 
         // Пауза для анимации
         Thread.Sleep(500);
+        }
+        else{
+            Console.WriteLine("Invalid input. Please enter a valid number.");
         }
     }
 }
