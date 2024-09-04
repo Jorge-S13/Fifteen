@@ -1,0 +1,14 @@
+D:\Code\Fifteen\Fifteen\bin\Debug\net8.0\Fifteen.exe
+D:\Code\Fifteen\Fifteen\bin\Debug\net8.0\Fifteen.deps.json
+D:\Code\Fifteen\Fifteen\bin\Debug\net8.0\Fifteen.runtimeconfig.json
+D:\Code\Fifteen\Fifteen\bin\Debug\net8.0\Fifteen.dll
+D:\Code\Fifteen\Fifteen\bin\Debug\net8.0\Fifteen.pdb
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.AssemblyInfoInputs.cache
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.AssemblyInfo.cs
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.csproj.CoreCompileInputs.cache
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.dll
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\refint\Fifteen.dll
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.pdb
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\Fifteen.genruntimeconfig.cache
+D:\Code\Fifteen\Fifteen\obj\Debug\net8.0\ref\Fifteen.dll
