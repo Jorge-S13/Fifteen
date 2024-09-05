@@ -30,6 +30,17 @@ void Greet()
 void Init()
 {
     board = new int[d, d];
+    int value = (d * d) - 1;
+
+    int rows = board.GetUpperBound(0) + 1;
+    int columns = board.Length / rows;
+
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < columns; j++){
+            board[i, j] = value;
+            value--;
+        }
+    }
 }
 
 void Draw()
@@ -41,7 +52,11 @@ void Draw()
         Console.WriteLine("\n");
         for(int j = 0; j < columns; j++){
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"{board[i,j]} \t");
+            if(board[i, j] == 0){
+                Console.WriteLine(" ");
+            }else{
+                Console.Write($"{board[i,j]} \t");
+            }
             Console.ForegroundColor = ConsoleColor.White;
 
         }
