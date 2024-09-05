@@ -32,8 +32,8 @@ void Init()
     board = new int[d, d];
     int value = (d * d) - 1;
 
-    int rows = board.GetUpperBound(0) + 1;
-    int columns = board.Length / rows;
+    int rows = board.GetLength(0);
+    int columns = board.GetLength(1);
 
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < columns; j++){
@@ -45,8 +45,8 @@ void Init()
 
 void Draw()
 {
-    int rows = board.GetUpperBound(0) + 1;
-    int columns = board.Length / rows;
+    int rows = board.GetLength(0);
+    int columns = board.GetLength(1);
 
     for(int i = 0; i < rows; i++){
         Console.WriteLine("\n");
