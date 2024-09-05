@@ -9,10 +9,10 @@ const int MIN = 3;
 const int MAX = 9;
 
 // Доска, где board[i][j] представляет строку i и столбец j
-int[,] board = new int[MAX, MAX];
-
+int[,] board;
 // Размер доски
 int d;
+
 
 // Прототипы функций
 void Clear()
@@ -24,17 +24,29 @@ void Greet()
 {
     Clear();
     Console.WriteLine("GAME OF FIFTEEN");
-    Thread.Sleep(2000);
+    Thread.Sleep(1000);
 }
 
 void Init()
 {
-    // TODO
+    board = new int[d, d];
 }
 
 void Draw()
 {
-    // TODO
+    int rows = board.GetUpperBound(0) + 1;
+    int columns = board.Length / rows;
+
+    for(int i = 0; i < rows; i++){
+        Console.WriteLine("\n");
+        for(int j = 0; j < columns; j++){
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write($"{board[i,j]} \t");
+            Console.ForegroundColor = ConsoleColor.White;
+
+        }
+    }
+    Console.WriteLine("\n");
 }
 
 bool Move(int tile)
