@@ -66,7 +66,16 @@ void Draw()
 
 bool Move(int tile)
 {
-    // TODO
+    (int row, int col) = FindElement(board, tile);
+    if(row != -1 && col != -1){
+        int rows = board.GetLength(0);
+        int cols = board.GetLength(1);
+
+        if (row - 1 >= 0 && board[row - 1, col] == 0) return true;
+        if (row + 1 < rows && board[row + 1, col] == 0) return true;
+        if (col - 1 >= 0 && board[row, col - 1] == 0) return true;
+        if (col + 1 < cols && board[row, col + 1] == 0) return true;    
+    }
     return false;
 }
 
@@ -74,6 +83,20 @@ bool Won()
 {
     // TODO
     return false;
+}
+
+(int i, int j) FindElement(int[,] array,int tile){
+    int rows = board.GetLength(0);
+    int columns = board.GetLength(1);
+
+    for(int i = 0;i < rows; i++){
+        for(int j = 0;j <columns;j++) {
+            if(array[i,j] == tile){
+                return (i,j);
+            }
+        }
+    }
+    return(-1,-1);
 }
 
 
