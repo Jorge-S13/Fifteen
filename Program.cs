@@ -17,7 +17,7 @@ int d;
 // Прототипы функций
 void Clear()
 {
-   // Console.Clear();
+   Console.Clear();
 }
 
 void Greet()
@@ -30,7 +30,7 @@ void Greet()
 void Init()
 {
     board = new int[d, d];
-    int value = (d * d) - 1;
+    int value = 0;
 
     int rows = board.GetLength(0);
     int columns = board.GetLength(1);
@@ -38,7 +38,7 @@ void Init()
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < columns; j++){
             board[i, j] = value;
-            value--;
+            value++;
         }
     }
 }
@@ -99,8 +99,34 @@ bool Move(int tile)
 
 bool Won()
 {
-    // TODO
-    return false;
+    int rows = board.GetLength(0);
+    int columns = board.GetLength(1);
+
+    int expectedValue = 1; // Первое число, которое должно стоять на доске
+
+    // Проверяем все элементы доски, кроме последнего
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            // Если это последний элемент, он должен быть равен 0
+            if (i == rows - 1 && j == columns - 1)
+            {
+                if (board[i, j] != 0)
+                {
+                    return false;
+                }
+            }
+            // Все остальные элементы должны идти по порядку от 1 до d*d-1
+            else if (board[i, j] != expectedValue)
+            {
+                return false;
+            }
+
+            expectedValue++;
+        }
+    }
+    return true;
 }
 
 (int i, int j) FindElement(int[,] array,int tile){
@@ -108,7 +134,7 @@ bool Won()
     int columns = board.GetLength(1);
 
     for(int i = 0;i < rows; i++){
-        for(int j = 0;j <columns;j++) {
+        for(int j = 0;j < columns;j++) {
             if(array[i,j] == tile){
                 return (i,j);
             }
