@@ -17,7 +17,7 @@ int d;
 // Прототипы функций
 void Clear()
 {
-    Console.Clear();
+   // Console.Clear();
 }
 
 void Greet()
@@ -48,33 +48,51 @@ void Draw()
     int rows = board.GetLength(0);
     int columns = board.GetLength(1);
 
+    Console.ForegroundColor = ConsoleColor.Green;
     for(int i = 0; i < rows; i++){
         Console.WriteLine("\n");
         for(int j = 0; j < columns; j++){
-            Console.ForegroundColor = ConsoleColor.Green;
             if(board[i, j] == 0){
-                Console.WriteLine(" ");
+                Console.Write(" \t");
             }else{
                 Console.Write($"{board[i,j]} \t");
             }
-            Console.ForegroundColor = ConsoleColor.White;
 
         }
     }
+    Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("\n");
 }
 
 bool Move(int tile)
 {
     (int row, int col) = FindElement(board, tile);
+    
     if(row != -1 && col != -1){
         int rows = board.GetLength(0);
         int cols = board.GetLength(1);
 
-        if (row - 1 >= 0 && board[row - 1, col] == 0) return true;
-        if (row + 1 < rows && board[row + 1, col] == 0) return true;
-        if (col - 1 >= 0 && board[row, col - 1] == 0) return true;
-        if (col + 1 < cols && board[row, col + 1] == 0) return true;    
+        // Проверяем вверх
+        if (row - 1 >= 0 && board[row - 1, col] == 0){
+
+            (board[row -1, col], board[row,col]) = (board[row,col], board[row -1, col]);
+            return true;
+        }
+        // Проверяем вниз
+        if (row + 1 < rows && board[row + 1, col] == 0){
+            (board[row + 1, col], board[row,col]) = (board[row,col], board[row + 1, col]);
+            return true;
+        } 
+        // Проверяем влево
+        if (col - 1 >= 0 && board[row, col - 1] == 0){
+            (board[row, col - 1], board[row,col]) = (board[row,col], board[row, col - 1]);
+            return true;
+        } 
+        // Проверяем вправо
+        if (col + 1 < cols && board[row, col + 1] == 0){
+            (board[row, col + 1], board[row,col]) = (board[row,col], board[row, col + 1]);
+            return true;
+        }     
     }
     return false;
 }
