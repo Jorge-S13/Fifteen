@@ -30,18 +30,27 @@ void Greet()
 void Init()
 {
     board = new int[d, d];
-    int value = 0;
+    int value = d * d - 1;
 
     int rows = board.GetLength(0);
     int columns = board.GetLength(1);
 
-    for(int i = 0; i < rows; i++){
-        for(int j = 0; j < columns; j++){
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
             board[i, j] = value;
-            value++;
+            value--;
         }
     }
+
+    // Если это четная доска (например, 4x4, 6x6), меняем местами 1 и 2
+    if (d % 2 == 0)
+    {
+        (board[rows - 1, columns - 2], board[rows - 1, columns - 3]) = (board[rows - 1, columns - 3], board[rows - 1, columns - 2]);
+    }
 }
+
 
 void Draw()
 {
